@@ -1,6 +1,9 @@
 import React from "react";
 import { useCart } from "../context/CartContext";
 import axios from "axios";
+import { FaRegCreditCard } from "react-icons/fa6";
+import { FaTrashAlt } from "react-icons/fa";
+import { GrClearOption } from "react-icons/gr";
 
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } =
@@ -37,7 +40,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center text-muted-foreground">
           <img
-            src="../../public/empty-cart.svg"
+            src="/empty-cart.svg"
             alt="Empty cart"
             className="w-40 h-40 mb-6 opacity-50"
           />
@@ -103,7 +106,7 @@ const Cart = () => {
                   className="text-sm text-red-500 hover:underline"
                   onClick={() => removeFromCart(item.master_menu_item_id)}
                 >
-                  Remove
+                  <FaTrashAlt />
                 </button>
               </div>
             </div>
@@ -116,15 +119,17 @@ const Cart = () => {
             </p>
             <div className="flex gap-4">
               <button
-                className="bg-red-500 text-white px-4 py-2 rounded-md"
+                className="bg-gray-400 text-gray-800 font-semibold px-4 py-2 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-md flex flex-row items-center justify-between gap-2"
                 onClick={clearCart}
               >
+                <GrClearOption />
                 Clear Cart
               </button>
               <button
-                className="bg-green-600 text-white px-4 py-2 rounded-md"
+                className="bg-gray-600 text-white font-semibold px-4 py-2 hover:bg-gray-400 hover:text-gray-800 rounded-md flex flex-row items-center justify-between gap-2"
                 onClick={handlePayment}
               >
+                <FaRegCreditCard />
                 Proceed to Payment
               </button>
             </div>

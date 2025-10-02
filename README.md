@@ -1,16 +1,61 @@
-# React + Vite
+# Shopping Cart App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack shopping cart application with complete CRUD and checkout functionality. The backend uses `.json` files as a data source instead of a traditional database, and the frontend provides a dynamic UI for product browsing, cart management, and payment flow.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **Backend**: Node.js, Express
+- **Frontend**: React, TailwindCss, JavaScript
+- **Data Storage**: JSON files (`data.json`, `orders.json`)
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+
+- **Product Management (CRUD)**:
+
+  - `GET /products` – Fetch all products
+  - `POST /addProducts` – Add a new product
+  - `PATCH /editProducts/:id` – Update product details
+  - `DELETE /deleteProduct/:id` – Remove a product
+
+- **Checkout API**:
+
+  - `POST /checkout` – Accepts cart data and saves order details to `orders.json`
+  - Stores product info, quantity, total price, and timestamp
+
+- **Data Handling**:
+  - All product and order data is stored in `.json` files
+  - No external database required
+
+### Frontend
+
+- Fetches product data from backend API
+- Displays product listings on the UI
+- Allows users to:
+  - Add products to cart
+  - View and update cart items
+  - Proceed to checkout
+- On checkout, sends cart data to backend and confirms order
+
+## Getting Started
+
+### Backend Setup
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+### Frontend Setup
+
+```bash
+cd ShopCom
+npm install
+npm run dev
+```

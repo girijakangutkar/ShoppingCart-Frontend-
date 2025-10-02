@@ -35,13 +35,13 @@ export default function ProductDetails({ product, onClose }) {
           Category: {product.category}
         </p>
         <p className="text-sm text-muted-foreground">Color: {product.color}</p>
-        <p className="font-semibold">${product.price.toFixed(2)}</p>
+        <p className="font-semibold">₹{product.price.toFixed(2)}</p>
         <p className="text-sm leading-relaxed">{product.description}</p>
       </div>
 
       {/* Add to Cart Button */}
       <button
-        className="rounded-md bg-gray-200 border-[#ccc] px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
+        className="rounded-md bg-gray-200 border-[#ccc] px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-gray-800 hover:text-white transition-colors shadow-lg"
         onClick={() => {
           addToCart({
             master_menu_item_id: product.id,

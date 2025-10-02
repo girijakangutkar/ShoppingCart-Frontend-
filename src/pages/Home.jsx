@@ -41,63 +41,85 @@ const Home = () => {
   }, [products, search, category, sort]);
 
   return (
-    <div className="w-full flex flex-col md:flex-row px-5 sm:px-10 md:px-10 xl:px-50 2xl:px-50 py-3 gap-4">
-      {/* Product List */}
-      <section
-        aria-label="Products list"
-        className={`flex-1 ${selected ? "md:w-2/3" : "md:w-full"} ${
-          selected ? "blur-sm md:blur-none" : ""
-        }`}
-      >
-        {isLoading ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="aspect-square animate-pulse rounded-lg border bg-muted/40"
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {filtered.map((p, index) => (
-              <ProductCard
-                key={p.id || index}
-                product={p}
-                onOpen={setSelected}
-              />
-            ))}
+    <div>
+      <div className="flex flex-column justify-start items-center px-50 w-full m-3 ml-0">
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          type="text"
+          className="border border-[#ccc] shadow-sm rounded p-1 pl-0 text-gray-800 font-medium"
+        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="all">All</option>
+          <option value="clothes">Clothes</option>
+          <option value="electronics">Electronics</option>
+          <option value="shoes">Shoes</option>
+        </select>
+        <select value={sort} onChange={(e) => setSort(e.target.value)}>
+          <option value="">-- Select price sort --</option>
+          <option value="price-asc">Low to High</option>
+          <option value="price-desc">High to Low</option>
+        </select>
+      </div>
 
-            {filtered.length === 0 && (
-              <p className="col-span-full text-sm text-muted-foreground">
-                No products match your filters.
-              </p>
-            )}
-          </div>
-        )}
-      </section>
+      <div className="w-full flex flex-col md:flex-row px-5 sm:px-10 md:px-10 xl:px-50 2xl:px-50 py-3 gap-4">
+        {/* Product List */}
+        <section
+          aria-label="Products list"
+          className={`flex-1 ${selected ? "md:w-2/3" : "md:w-full"} ${
+            selected ? "blur-sm md:blur-none" : ""
+          }`}
+        >
+          {isLoading ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="aspect-square animate-pulse rounded-lg border bg-muted/40"
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {filtered.map((p, index) => (
+                <ProductCard
+                  key={p.id || index}
+                  product={p}
+                  onOpen={setSelected}
+                />
+              ))}
 
-      {/* Sidebar for large screens */}
-      {selected && (
-        <div className="hidden md:flex md:w-1/3">
-          <ProductDetails
-            product={selected}
-            onClose={() => setSelected(null)}
-          />
-        </div>
-      )}
+              {filtered.length === 0 && (
+                <p className="col-span-full text-sm text-muted-foreground">
+                  No products match your filters.
+                </p>
+              )}
+            </div>
+          )}
+        </section>
 
-      {/* Modal for mobile screens */}
-      {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm md:hidden">
-          <div className="bg-white w-[90%] max-w-sm rounded-lg shadow-lg overflow-y-auto max-h-[90vh] p-4">
+        {/* Sidebar for large screens */}
+        {selected && (
+          <div className="hidden md:flex md:w-1/3">
             <ProductDetails
               product={selected}
               onClose={() => setSelected(null)}
             />
           </div>
-        </div>
-      )}
+        )}
+
+        {/* Modal for mobile screens */}
+        {selected && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm md:hidden">
+            <div className="bg-white w-[90%] max-w-sm rounded-lg shadow-lg overflow-y-auto max-h-[90vh] p-4">
+              <ProductDetails
+                product={selected}
+                onClose={() => setSelected(null)}
+              />
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -32,7 +32,7 @@ export default function ProductCard({ product, onOpen }) {
           </span>
 
           <button
-            className="rounded-md bg-gray-200 border-[#ccc] px-2 py-1 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg"
+            className="rounded-md bg-gray-200 border-[#ccc] px-2 py-1 text-sm font-medium text-primary-foreground hover:bg-gray-800 hover:text-white transition-colors shadow-lg"
             onClick={() => {
               addToCart({
                 master_menu_item_id: product.id,
