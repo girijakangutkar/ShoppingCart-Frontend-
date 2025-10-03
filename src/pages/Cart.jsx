@@ -119,14 +119,14 @@ const Cart = () => {
                 onClick={clearCart}
               >
                 <GrClearOption />
-                Clear Cart
+                <span className="hidden sm:inline">Clear Cart</span>
               </button>
               <button
                 className="bg-gray-600 text-white font-semibold px-4 py-2 hover:bg-gray-400 hover:text-gray-800 rounded-md flex flex-row items-center justify-between gap-2"
                 onClick={handlePayment}
               >
                 <FaRegCreditCard />
-                Proceed to Payment
+                <span className="hidden sm:inline">Proceed to Payment</span>
               </button>
             </div>
           </div>
