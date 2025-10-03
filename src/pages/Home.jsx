@@ -16,7 +16,9 @@ const Home = () => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://localhost:3000/app/products");
+        const response = await axios.get(
+          "https://goshopping-3lv9.onrender.com/app/products"
+        );
         setProducts(response.data.list);
       } catch (error) {
         console.log(error);

@@ -21,7 +21,7 @@ const Cart = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/app/checkout",
+        `https://goshopping-3lv9.onrender.com/app/checkout`,
         payload
       );
       console.log("Order placed:", response.data);
