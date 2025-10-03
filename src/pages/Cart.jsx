@@ -35,7 +35,7 @@ const Cart = () => {
 
   return (
     <div className="w-full px-5 sm:px-10 md:px-30 xl:px-50 2xl:px-50 py-3 gap-4">
-      <h2 className="text-2xl font-semibold mb-4">Your Cart</h2>
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4">Your Cart</h2>
 
       {cartItems.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center text-muted-foreground">
@@ -57,10 +57,10 @@ const Cart = () => {
           {cartItems.map((item) => (
             <div
               key={item.master_menu_item_id}
-              className="flex flex-wrap sm:flex-nowrap items-center justify-between border-b pb-4 gap-4"
+              className="flex flex-col sm:flex-row sm:items-center justify-between border-b pb-4 gap-3 sm:gap-4"
             >
               {/* Product Info */}
-              <div className="flex items-center gap-4 w-full sm:w-[40%] min-w-[200px]">
+              <div className="flex items-center gap-3 w-full sm:w-[40%]">
                 <img
                   src={item.image || "/placeholder.svg"}
                   alt={item.name}
@@ -77,9 +77,9 @@ const Cart = () => {
               </div>
 
               {/* Quantity Controls */}
-              <div className="flex items-center gap-2 min-w-[120px] justify-center">
+              <div className="flex items-center gap-1 justify-center text-sm">
                 <button
-                  className="px-2 py-1 border rounded-md"
+                  className="px-2 py-1 border rounded-md text-sm"
                   onClick={() =>
                     updateQuantity(item.master_menu_item_id, item.quantity - 1)
                   }
@@ -98,7 +98,7 @@ const Cart = () => {
               </div>
 
               {/* Price + Remove */}
-              <div className="flex items-center gap-4 min-w-[160px] justify-end">
+              <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto text-sm">
                 <p className="font-semibold whitespace-nowrap">
                   ₹{(parseFloat(item.price) * item.quantity).toFixed(2)}
                 </p>
@@ -113,8 +113,8 @@ const Cart = () => {
           ))}
 
           {/* Cart Summary */}
-          <div className="flex flex-col sm:flex-row justify-between items-center mt-6 gap-4">
-            <p className="text-xl font-semibold">
+          <div className=" text-gray-800 font-semibold px-4 py-2 px-4 py-2 rounded-md flex flex-row items-center justify-between gap-2">
+            <p className="text-base sm:text-xl font-semibold">
               Total: ₹{getCartTotal().toFixed(2)}
             </p>
             <div className="flex gap-4">

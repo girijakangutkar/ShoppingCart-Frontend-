@@ -42,21 +42,30 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex flex-column justify-start items-center px-50 w-full m-3 ml-0">
+      <div className="w-full overflow-x-auto whitespace-nowrap px-4 py-3 bg-white shadow-md rounded-lg flex gap-3 items-center sm:flex-wrap sm:justify-start sm:whitespace-normal sm:overflow-visible">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          className="border border-[#ccc] shadow-sm rounded p-1 pl-0 text-gray-800 font-medium"
+          placeholder="Search products..."
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[150px]"
         />
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[120px]"
+        >
           <option value="all">All</option>
           <option value="clothes">Clothes</option>
           <option value="electronics">Electronics</option>
           <option value="shoes">Shoes</option>
         </select>
-        <select value={sort} onChange={(e) => setSort(e.target.value)}>
-          <option value="">-- Select price sort --</option>
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[140px]"
+        >
+          <option value="">-- Sort by price --</option>
           <option value="price-asc">Low to High</option>
           <option value="price-desc">High to Low</option>
         </select>
@@ -66,9 +75,9 @@ const Home = () => {
         {/* Product List */}
         <section
           aria-label="Products list"
-          className={`flex-1 ${selected ? "md:w-2/3" : "md:w-full"} ${
-            selected ? "blur-sm md:blur-none" : ""
-          }`}
+          className={`flex-1 ${
+            selected ? "md:w-2/3" : "md:w-full"
+          } overflow-y-auto max-h-[calc(100vh-150px)] pr-2`}
         >
           {isLoading ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
