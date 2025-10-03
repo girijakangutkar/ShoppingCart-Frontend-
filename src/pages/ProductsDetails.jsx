@@ -35,7 +35,7 @@ export default function ProductDetails({ product, onClose }) {
           Category: {product.category}
         </p>
         <p className="text-sm text-muted-foreground">Color: {product.color}</p>
-        <p className="font-semibold">₹{product.price.toFixed(2)}</p>
+        <p className="font-semibold">₹{product.price}</p>
         <p className="text-sm leading-relaxed">{product.description}</p>
       </div>
 

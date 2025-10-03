@@ -8,6 +8,7 @@ import { GrClearOption } from "react-icons/gr";
 const Cart = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } =
     useCart();
+  const Base_URI = import.meta.env.VITE_BASE_API;
 
   const handlePayment = async () => {
     try {
@@ -17,13 +18,10 @@ const Cart = () => {
           quantity: item.quantity,
           price: item.price,
         })),
-        totalPrice: getCartTotal().toFixed(2),
+        totalPrice: getCartTotal(),
       };
 
-      const response = await axios.post(
-        `https://goshopping-3lv9.onrender.com/app/checkout`,
-        payload
-      );
+      const response = await axios.post(`${Base_URI}/app/checkout`, payload);
       console.log("Order placed:", response.data);
       alert("Order placed successfully!");
       clearCart();
@@ -70,9 +68,7 @@ const Cart = () => {
                   <h3 className="text-base font-medium truncate">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    ₹{parseFloat(item.price).toFixed(2)}
-                  </p>
+                  <p className="text-sm text-muted-foreground">₹{item.price}</p>
                 </div>
               </div>
 
@@ -100,7 +96,7 @@ const Cart = () => {
               {/* Price + Remove */}
               <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto text-sm">
                 <p className="font-semibold whitespace-nowrap">
-                  ₹{(parseFloat(item.price) * item.quantity).toFixed(2)}
+                  ₹{item.price * item.quantity}
                 </p>
                 <button
                   className="text-sm text-red-500 hover:underline"

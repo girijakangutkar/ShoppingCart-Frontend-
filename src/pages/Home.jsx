@@ -12,13 +12,13 @@ const Home = () => {
   const [selected, setSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const Base_URI = import.meta.env.VITE_BASE_API;
+
   useEffect(() => {
     const fetchProducts = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(
-          "https://goshopping-3lv9.onrender.com/app/products"
-        );
+        const response = await axios.get(`${Base_URI}/app/products`);
         setProducts(response.data.list);
       } catch (error) {
         console.log(error);
@@ -61,6 +61,7 @@ const Home = () => {
           <option value="clothes">Clothes</option>
           <option value="electronics">Electronics</option>
           <option value="shoes">Shoes</option>
+          <option value="accessories">Accessories</option>
         </select>
         <select
           value={sort}

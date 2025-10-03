@@ -27,9 +27,7 @@ export default function ProductCard({ product, onOpen }) {
           </p>
         </div>
         <div className="mt-2 flex items-center justify-between">
-          <span className="font-semibold">
-            ₹{Number(product.price || 0).toFixed(2)}
-          </span>
+          <span className="font-semibold">₹{Number(product.price || 0)}</span>
 
           <button
             className="rounded-md bg-gray-200 border-[#ccc] px-2 py-1 text-sm font-medium text-primary-foreground hover:bg-gray-800 hover:text-white transition-colors shadow-lg"
