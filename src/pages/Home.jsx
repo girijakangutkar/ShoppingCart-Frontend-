@@ -44,7 +44,7 @@ const Home = () => {
 
   return (
     <div>
-      <div className="w-full overflow-x-auto whitespace-nowrap px-4 py-3 bg-white shadow-md rounded-lg flex gap-3 items-center sm:flex-wrap sm:justify-start sm:whitespace-normal sm:overflow-visible">
+      <div className="w-full overflow-x-auto whitespace-nowrap px-4 py-3 bg-white shadow-md rounded-lg flex gap-3 items-center sm:flex-wrap sm:justify-start sm:whitespace-normal sm:overflow-visible hide-scrollbar">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -80,7 +80,7 @@ const Home = () => {
           aria-label="Products list"
           className={`flex-1 ${
             selected ? "md:w-2/3" : "md:w-full"
-          } overflow-y-auto max-h-[calc(100vh-150px)] pr-2`}
+          } overflow-y-auto max-h-[calc(100vh-150px)] pr-2 hide-scrollbar`}
         >
           {isLoading ? (
             <div className="space-y-4">

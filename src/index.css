@@ -18,3 +18,13 @@ h4 {
   font-size: large;
   font-weight: 600;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
