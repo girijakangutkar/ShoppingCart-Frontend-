@@ -83,13 +83,21 @@ const Home = () => {
           } overflow-y-auto max-h-[calc(100vh-150px)] pr-2`}
         >
           {isLoading ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="aspect-square animate-pulse rounded-lg border bg-muted/40"
-                />
-              ))}
+            <div className="space-y-4">
+              <div className="text-center text-sm text-muted-foreground">
+                The server is deployed on a free-tier service, so the first
+                response may take a little time. Please be patient and we truly
+                appreciate your understanding.
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="aspect-square animate-pulse rounded-lg border bg-muted/40"
+                  />
+                ))}
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
